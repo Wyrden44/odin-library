@@ -39,6 +39,29 @@ function addBookToTable(book) {
             }
         }
     }
+
+    // user action buttons
+    let actionCell = row.insertCell();
+    createDeleteButton(book.id, actionCell);
+    createReadButton(book.id, actionCell);
+}
+
+function createDeleteButton(bookID, cell) {
+    // creates a delete button and adds it to the corresponding cell
+    let deleteBtn = document.createElement("button");
+    deleteBtn.id = bookID;
+    deleteBtn.classList.add("delete-button");
+    deleteBtn.textContent = "delete";
+    cell.appendChild(deleteBtn);
+}
+
+function createReadButton(bookID, cell) {
+    // creates a mark as read button and adds it to the corresponding cell
+    let readBtn = document.createElement("button");
+    readBtn.id = bookID;
+    readBtn.classList.add("read-button");
+    readBtn.textContent = "Mark as read/unread";
+    cell.appendChild(readBtn);
 }
 
 dialogButton.addEventListener("click", (e) => {
