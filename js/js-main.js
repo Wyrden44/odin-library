@@ -70,6 +70,7 @@ submitDialogButton.addEventListener("click", (e) => {
     addBook(bookData[0], bookData[1], bookData[2], bookData[3]);
 
     dialog.close();
+    form.reset();
 });
 
 addBook("Harry Potter", "J.K. Rowling", 354, true);
