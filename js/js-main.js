@@ -8,12 +8,17 @@ const submitDialogButton = document.querySelector("#submit-dialog");
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
 
+
 function Book(title, author, pages, hasRead) {
     this.id = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.hasRead = hasRead;
+}
+
+Book.prototype.toggleRead = function() {
+    this.hasRead = !this.hasRead;
 }
 
 function addBook(title, author, pages, hasRead) {
@@ -64,6 +69,31 @@ function createReadButton(bookID, cell) {
     cell.appendChild(readBtn);
 }
 
+function deleteBook(bookID) {
+    for (let i=0; i<library.length; i++) {
+        if (library[i].id === bookID) {
+            library.splice(i, 1);
+            var rowNr = i;
+            break
+        }
+    }
+    
+    tableBody.deleteRow(rowNr);
+}
+
+function toggleRead(bookID) {
+    for (let i=0; i<library.length; i++) {
+        if (library[i].id === bookID) {
+            library[i].toggleRead();
+            var rowNr = i;
+            break
+        }
+    }
+    
+    const row = tableBody.rows[rowNr];
+    row.cells[4].textContent = library[rowNr].hasRead ? "✓" : "✕";
+}
+
 dialogButton.addEventListener("click", (e) => {
     dialog.showModal();
 });
@@ -95,6 +125,18 @@ submitDialogButton.addEventListener("click", (e) => {
     dialog.close();
     form.reset();
 });
+
+// user actions
+tableBody.addEventListener("click", (e) => {
+    let target = e.target;
+
+    if (target.classList.contains("delete-button")) {
+        deleteBook(target.id);
+    }
+    else if (target.classList.contains("read-button")) {
+        toggleRead(target.id);
+    }
+})
 
 addBook("Harry Potter", "J.K. Rowling", 354, true);
 addBook("Harry Potter", "J.K. Rowling", 354, true);
