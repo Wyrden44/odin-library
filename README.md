@@ -16,7 +16,7 @@ Hours Worked: 2h
 ## Progress
 
 ### Progress on Foundations Course:
-:white-checkmark: Complete
+:white_check_mark: Complete
 
 ### Progress on Node.js Path
 
