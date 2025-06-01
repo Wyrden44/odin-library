@@ -20,6 +20,6 @@ Hours Worked: 2h
 
 ### Progress on Node.js Path
 
-Intermediate HTML and CSS: :white-checkmark: Complete
+Intermediate HTML and CSS: :white_check_mark: Complete
 
 Javascript Course: ~10%
