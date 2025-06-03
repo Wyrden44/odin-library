@@ -8,17 +8,24 @@ const submitDialogButton = document.querySelector("#submit-dialog");
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
 
+class Book {
+    id;
+    title;
+    author;
+    pages;
+    hasRead;
 
-function Book(title, author, pages, hasRead) {
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.hasRead = hasRead;
-}
+    constructor(title, author, pages, hasRead) {
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.hasRead = hasRead;
+    }
 
-Book.prototype.toggleRead = function() {
-    this.hasRead = !this.hasRead;
+    toggleRead() {
+        this.hasRead = !this.hasRead;
+    }
 }
 
 function addBook(title, author, pages, hasRead) {
